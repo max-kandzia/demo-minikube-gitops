@@ -5,7 +5,7 @@ metadata:
   namespace: demo-db
 spec:
   instances: 1
-  postgresql:
-    version: "15"
   storage:
     size: 2Gi
+  postgresql:
+    parameters: {}

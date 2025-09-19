@@ -19,7 +19,7 @@ spec:
         objectStore:
           type: s3
           s3:
-            endpoint: "http://minio.minio.svc.cluster.local:9000"
+            endpoint: "http://minio.minio.svc.cluster.local:9000" 
             accessKey: "minio"
             secretKey: "miniopass"
             bucket: "dremio-demo"
