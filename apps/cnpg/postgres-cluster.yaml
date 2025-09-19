@@ -1,0 +1,11 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: demo-postgres
+  namespace: demo-db
+spec:
+  instances: 1
+  postgresql:
+    version: "15"
+  storage:
+    size: 2Gi

@@ -1,0 +1,14 @@
+auth:
+  rootUser: "minio"
+  rootPassword: "miniopass"
+defaultBuckets: "dremio-demo"
+
+defaultBuckets: "dremio-demo"
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+  limits:
+    memory: 512Mi
+    cpu: 500m
