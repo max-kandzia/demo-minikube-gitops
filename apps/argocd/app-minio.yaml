@@ -8,10 +8,18 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami
     chart: minio
-    targetRevision: 14.7.7   # Chart-Version prüfen: helm search repo bitnami/minio
+    targetRevision: 14.7.7
     helm:
-      valueFiles:
-        - values.yaml
+      values: |
+        service:
+          type: NodePort
+          nodePorts:
+            minio: 32134
+            console: 30784
+        auth:
+          rootUser: "minio"
+          rootPassword: "miniopass"
+        defaultBuckets: "dremio-demo"
   destination:
     server: https://kubernetes.default.svc
     namespace: minio

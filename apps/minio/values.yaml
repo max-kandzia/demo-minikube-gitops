@@ -1,9 +1,15 @@
+service:
+  type: NodePort
+  nodePorts:
+    minio: 32134
+    console: 30784
+
 auth:
   rootUser: "minio"
   rootPassword: "miniopass"
-defaultBuckets: "dremio-demo"
 
 defaultBuckets: "dremio-demo"
+
 
 resources:
   requests:
