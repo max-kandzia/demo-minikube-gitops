@@ -1,21 +1,14 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: minio
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://charts.bitnami.com/bitnami
-    chart: minio
-    targetRevision: 14.7.7
-    helm:
-      valueFiles:
-        - values.yaml
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: minio
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+auth:
+  rootUser: "minio"
+  rootPassword: "miniopass"
+defaultBuckets: "dremio-demo"
+
+defaultBuckets: "dremio-demo"
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+  limits:
+    memory: 512Mi
+    cpu: 500m
