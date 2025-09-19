@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    chart: minio
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 14.7.7   # <-- passende Chart-Version (prüfen mit `helm search repo bitnami/minio`)
+    chart: minio
+    targetRevision: 14.7.7
     helm:
       valueFiles:
-        - apps/minio/values.yaml
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: minio
