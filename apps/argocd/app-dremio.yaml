@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/DEINUSER/demo-minikube-gitops.git'
+    repoURL: 'https://github.com/max-kandzia/demo-minikube-gitops.git'
     targetRevision: HEAD
     path: apps/dremio
     helm:

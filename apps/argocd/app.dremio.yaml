@@ -6,27 +6,25 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://helm.dremio.com  # offizielle Helm Repo
+    repoURL: https://helm.dremio.com
     chart: dremio
-    targetRevision: 23.1.0  # Beispiel Version, ggf. prüfen
+    targetRevision: 19.0.0
     helm:
       values: |
-        persistence:
-          enabled: true
-          storageClass: standard
-          size: 10Gi
-
-        objectStore:
+        coordinator:
+          replicas: 1
+          service:
+            type: ClusterIP
+        executor:
+          replicas: 1
+        dremioUser: admin
+        dremioPassword: admin123
+        storage:
           type: s3
           s3:
-            endpoint: "http://minio.minio.svc.cluster.local:9000" 
-            accessKey: "minio"
-            secretKey: "miniopass"
-            bucket: "dremio-demo"
-
-        postgresql:
-          host: "demo-postgres.demo-db.svc.cluster.local"
-          port: 5432
-          database: "dremio"
-          user: "postgres"
-          password: "postgres"  # Demo-Passwort, bitte anpassen
+            bucketName: dremio-demo
+            accessKey: minio
+            secretKey: miniopass
+            endpoint: http://minio.minio.svc.cluster.local:9000
+  destination:
+    serve
