@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-postgres
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://charts.bitnami.com/bitnami # Dummy, wir nutzen Inline Values für Cluster
+    chart: cloudnative-pg  # Wird nicht direkt genutzt, nur für Kompatibilität
+    targetRevision: 1.15.0
+    helm:
+      values: |
+        # Postgres Cluster Definition
+        cluster:
+          name: demo-postgres
+          instances: 1
+          postgresql:
+            version: "15"
+          storage:
+            size: 2Gi
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo-db
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
