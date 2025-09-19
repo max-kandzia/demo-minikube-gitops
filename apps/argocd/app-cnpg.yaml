@@ -1,27 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-postgres
+  name: app-cnpg
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://charts.bitnami.com/bitnami # Dummy, wir nutzen Inline Values für Cluster
-    chart: cloudnative-pg  # Wird nicht direkt genutzt, nur für Kompatibilität
-    targetRevision: 1.0.11
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: cloudnative-pg
+    targetRevision: 1.0.11   # bitte existierende Version nutzen
     helm:
-      chart: cloudnative-pg 
-      version: 1.0.11   # Beispiel
-      repoURL: https://charts.bitnami.com/bitnami
       values: |
-        # Postgres Cluster Definition
-        cluster:
-          name: demo-postgres
-          instances: 1
-          postgresql:
-            version: "15"
-          storage:
-            size: 2Gi
+        installCRDs: false
+        postgresql:
+          password: demo123
+        instances: 1
+        storage:
+          size: 2Gi
   destination:
     server: https://kubernetes.default.svc
     namespace: demo-db
