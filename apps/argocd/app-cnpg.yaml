@@ -8,8 +8,11 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami # Dummy, wir nutzen Inline Values für Cluster
     chart: cloudnative-pg  # Wird nicht direkt genutzt, nur für Kompatibilität
-    targetRevision: 1.15.0
+    targetRevision: 1.0.11
     helm:
+      chart: cloudnative-pg 
+      version: 1.0.11   # Beispiel
+      repoURL: https://charts.bitnami.com/bitnami
       values: |
         # Postgres Cluster Definition
         cluster:

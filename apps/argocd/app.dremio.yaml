@@ -27,4 +27,9 @@ spec:
             secretKey: miniopass
             endpoint: http://minio.minio.svc.cluster.local:9000
   destination:
-    serve
+    server: https://kubernetes.default.svc
+    namespace: dremio
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
